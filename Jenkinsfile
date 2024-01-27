@@ -16,6 +16,7 @@ pipeline {
 
     stage('static analysis') {
       steps {
+        sh './mvnw -Dcargo.servlet.port=8082 cargo:start'
         sh '''./mvnw clean verify sonar:sonar \\
   -Dsonar.projectKey=JPetstore \\
   -Dsonar.projectName=\'JPetstore\' \\
